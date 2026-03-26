@@ -409,19 +409,14 @@ chatHistory.push({role:'user',content:text});
 showTyping();
 
 try{
-var res=await fetch('https://api.anthropic.com/v1/messages',{
+var res=await fetch(SUPABASE_URL+'/functions/v1/super-task',{
 method:'POST',
 headers:{
 'Content-Type':'application/json',
-'anthropic-version':'2023-06-01',
-'anthropic-dangerous-direct-browser-access':'true'
+'apikey':SUPABASE_KEY,
+'Authorization':'Bearer '+SUPABASE_KEY
 },
-body:JSON.stringify({
-model:'claude-sonnet-4-20250514',
-max_tokens:1024,
-system:CHAT_SYSTEM,
-messages:chatHistory
-})
+body:JSON.stringify({messages:chatHistory})
 });
 var data=await res.json();
 var reply=(data.content&&data.content[0]&&data.content[0].text)||'Sorry, I had trouble responding. Please email james@cornhub.ai for help.';
