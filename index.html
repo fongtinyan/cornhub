@@ -13,7 +13,7 @@ html,body{height:100%;overflow:hidden}
 body{font-family:'Barlow',sans-serif;background:#0D0D0D;color:#E8E6E1}
 body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.3}
 
-.shell{height:100%;display:flex;flex-direction:column;position:relative;z-index:1}
+.shell{height:100%;display:flex;flex-direction:column;position:relative;z-index:1;max-width:768px;margin:0 auto;width:100%}
 
 /* ---- landing: everything centered as one block ---- */
 .landing{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;transition:all .6s cubic-bezier(.4,0,.2,1)}
@@ -25,15 +25,13 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .input-field:focus{border-color:#F5C518}
 .send-btn{font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;padding:.9rem 1.6rem;background:#F5C518;color:#1A1A1A;border:none;cursor:pointer;font-weight:700;transition:background .25s}
 .send-btn:hover{background:#FF6B35;color:#fff}
-.send-btn:disabled{opacity:.45;cursor:not-allowed}
+.send-btn:disabled{opacity:.3;cursor:not-allowed;pointer-events:none}
 .browse{font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(232,230,225,.35);text-decoration:none;transition:color .3s;margin-top:.8rem}
 .browse:hover{color:#F5C518}
 
 /* ---- messages (hidden until active) ---- */
-.messages{display:none;overflow-y:auto;padding:0 1.5rem;flex-direction:column;gap:.7rem}
-.messages::-webkit-scrollbar{width:4px}
-.messages::-webkit-scrollbar-track{background:transparent}
-.messages::-webkit-scrollbar-thumb{background:rgba(245,197,24,.25);border-radius:2px}
+.messages{display:none;overflow-y:scroll;padding:0 1.5rem;flex-direction:column;gap:.7rem;scrollbar-width:none}
+.messages::-webkit-scrollbar{width:0;display:none}
 .msg{max-width:min(75%,560px);padding:.75rem 1.1rem;border-radius:6px;font-family:'Barlow',sans-serif;font-size:.95rem;line-height:1.6;word-wrap:break-word;animation:msgIn .35s ease-out}
 .msg.user{align-self:flex-end;background:#1A1A1A;border:1px solid rgba(245,197,24,.12);color:#E8E6E1}
 .msg.assistant{align-self:flex-start;background:#2A2D35;border:1px solid rgba(245,197,24,.08);color:#E8E6E1}
@@ -46,7 +44,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 @keyframes dot{0%,80%,100%{transform:scale(0);opacity:.4}40%{transform:scale(1);opacity:1}}
 
 /* ---- bottom input (only visible in active) ---- */
-.bottom{display:none;padding:1rem 1.5rem 1.5rem;flex-direction:column;align-items:center;flex-shrink:0}
+.bottom{display:none;padding:1rem 1.5rem 1.5rem;flex-shrink:0}
 
 /* ---- active state: chat mode ---- */
 .shell.active .landing{flex:0;justify-content:flex-start;padding:1.2rem 1.5rem .8rem}
@@ -55,7 +53,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backgr
 .shell.active .landing .input-row{display:none}
 .shell.active .landing .browse{display:none}
 .shell.active .messages{display:flex;flex:1}
-.shell.active .bottom{display:flex}
+.shell.active .bottom{display:flex;flex-direction:column;align-items:center}
 
 /* ---- mobile ---- */
 @media(max-width:520px){
@@ -98,7 +96,7 @@ var inputLanding=document.getElementById('inputLanding');
 var sendLanding=document.getElementById('sendLanding');
 var inputChat=document.getElementById('inputChat');
 var sendChat=document.getElementById('sendChat');
-var history=[];
+var chatHistory=[];
 var busy=false;
 
 function activeInput(){return shell.classList.contains('active')?inputChat:inputLanding}
@@ -141,26 +139,35 @@ setTimeout(function(){inputChat.focus()},100);
 }
 
 add('user',t);
-history.push({role:'user',content:t});
+chatHistory.push({role:'user',content:t});
 dots();
 
 try{
 var r=await fetch(SB+'/functions/v1/super-task',{
 method:'POST',
 headers:{'Content-Type':'application/json','apikey':KEY,'Authorization':'Bearer '+KEY},
-body:JSON.stringify({messages:history})
+body:JSON.stringify({messages:chatHistory})
 });
 var d=await r.json();
 var reply=(d.content&&d.content[0]&&d.content[0].text)||'Sorry, I had trouble responding. Email james@cornhub.ai for help.';
-history.push({role:'assistant',content:reply});
+chatHistory.push({role:'assistant',content:reply});
 undots();add('assistant',reply);
 }catch(e){
 undots();add('assistant','Something went wrong. Email james@cornhub.ai or call 1300 921 088.');
 }
-busy=false;sendLanding.disabled=false;sendChat.disabled=false;
+busy=false;
+syncBtn(inputLanding,sendLanding);
+syncBtn(inputChat,sendChat);
 inputChat.focus();
 }
 
+function syncBtn(inp,btn){btn.disabled=!inp.value.trim()}
+
+sendLanding.disabled=true;
+sendChat.disabled=true;
+
+inputLanding.addEventListener('input',function(){syncBtn(inputLanding,sendLanding)});
+inputChat.addEventListener('input',function(){syncBtn(inputChat,sendChat)});
 sendLanding.addEventListener('click',go);
 sendChat.addEventListener('click',go);
 inputLanding.addEventListener('keydown',function(e){if(e.key==='Enter')go()});
