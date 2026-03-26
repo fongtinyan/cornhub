@@ -374,10 +374,17 @@ if(chatWindow.classList.contains('open'))chatInput.focus();
 });
 chatClose.addEventListener('click',function(){chatWindow.classList.remove('open')});
 
+function formatChat(text){
+var s=text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+s=s.replace(/\n/g,'<br>');
+return s;
+}
+
 function addChatMsg(role,text){
 var div=document.createElement('div');
 div.className='chat-msg '+role;
-div.textContent=text;
+if(role==='assistant'){div.innerHTML=formatChat(text)}else{div.textContent=text}
 chatMessages.appendChild(div);
 chatMessages.scrollTop=chatMessages.scrollHeight;
 return div;
