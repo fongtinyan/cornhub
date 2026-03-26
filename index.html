@@ -22,26 +22,52 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:
 .nav-links a:hover::after{width:100%}
 .nav-cta{font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;padding:.7rem 1.8rem;background:var(--corn-yellow);color:var(--corn-dark);text-decoration:none;font-weight:700;transition:all .3s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
 .nav-cta:hover{background:var(--corn-accent);color:#fff}
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(13,13,13,.95) 0%,rgba(42,45,53,.8) 50%,rgba(13,13,13,.95) 100%)}
+/* Hero — AI landing */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(13,13,13,.95) 0%,rgba(42,45,53,.8) 50%,rgba(13,13,13,.95) 100%)}
 .hero-grid{position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(245,197,24,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(245,197,24,.05) 1px,transparent 1px);background-size:60px 60px;animation:gridPulse 8s ease-in-out infinite}
 @keyframes gridPulse{0%,100%{opacity:.3}50%{opacity:.7}}
-.hero-content{max-width:1200px;margin:0 auto;padding:8rem 3rem 4rem;position:relative;z-index:2}
-.hero-tag{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;color:var(--corn-yellow);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeSlideUp .8s .3s forwards}
-.hero-tag::before{content:'';width:40px;height:2px;background:var(--corn-yellow)}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,10rem);line-height:.9;letter-spacing:.02em;margin-bottom:2rem;opacity:0;animation:fadeSlideUp .8s .5s forwards}
-.hero h1 .yellow{color:var(--corn-yellow)}
-.hero h1 .outline{-webkit-text-stroke:2px var(--corn-light);color:transparent}
-.hero-sub{font-size:1.25rem;font-weight:300;line-height:1.7;max-width:550px;color:rgba(232,230,225,.7);margin-bottom:3rem;opacity:0;animation:fadeSlideUp .8s .7s forwards}
-.hero-actions{display:flex;gap:1.5rem;flex-wrap:wrap;opacity:0;animation:fadeSlideUp .8s .9s forwards}
+.hero-content{width:100%;max-width:720px;margin:0 auto;padding:8rem 2rem 4rem;position:relative;z-index:2;text-align:center}
+.hero-logo{font-size:3.5rem;margin-bottom:.5rem;opacity:0;animation:fadeSlideUp .8s .2s forwards;transition:all .5s}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;letter-spacing:.03em;margin-bottom:.8rem;color:var(--corn-white);opacity:0;animation:fadeSlideUp .8s .4s forwards;transition:all .5s}
+.hero-subtitle{font-family:'Barlow',sans-serif;font-size:1.1rem;font-weight:300;color:rgba(232,230,225,.5);margin-bottom:2.5rem;opacity:0;animation:fadeSlideUp .8s .6s forwards;transition:all .5s}
+.hero-search{display:flex;gap:0;max-width:600px;margin:0 auto 1.5rem;opacity:0;animation:fadeSlideUp .8s .8s forwards;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.hero-search-input{flex:1;font-family:'Barlow',sans-serif;font-size:1.05rem;padding:1rem 1.4rem;background:rgba(42,45,53,.7);border:1px solid rgba(245,197,24,.25);border-right:none;color:var(--corn-light);outline:none;transition:border-color .3s}
+.hero-search-input::placeholder{color:rgba(232,230,225,.35)}
+.hero-search-input:focus{border-color:var(--corn-yellow)}
+.hero-search-btn{font-family:'Space Mono',monospace;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;padding:1rem 2rem;background:var(--corn-yellow);color:var(--corn-dark);border:none;cursor:pointer;font-weight:700;transition:all .3s;white-space:nowrap}
+.hero-search-btn:hover{background:var(--corn-accent);color:#fff}
+.hero-search-btn:disabled{opacity:.5;cursor:not-allowed}
+.hero-browse{opacity:0;animation:fadeSlideUp .8s 1s forwards;margin-bottom:2rem;transition:all .5s}
+.hero-browse a{font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(232,230,225,.4);text-decoration:none;transition:color .3s}
+.hero-browse a:hover{color:var(--corn-yellow)}
+.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;max-width:600px;margin:0 auto;opacity:0;animation:fadeSlideUp .8s 1.1s forwards;transition:all .5s}
+.hero-chip{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.05em;padding:.5rem 1rem;background:rgba(42,45,53,.5);color:rgba(232,230,225,.55);border:1px solid rgba(245,197,24,.15);cursor:pointer;transition:all .3s;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px))}
+.hero-chip:hover{background:rgba(245,197,24,.15);color:var(--corn-yellow);border-color:rgba(245,197,24,.4)}
+/* Hero chat mode */
+.hero.chat-active .hero-logo{font-size:2rem;margin-bottom:0}
+.hero.chat-active h1,.hero.chat-active .hero-subtitle,.hero.chat-active .hero-browse,.hero.chat-active .hero-chips{opacity:0;height:0;margin:0;padding:0;overflow:hidden;pointer-events:none;animation:none}
+.hero.chat-active .hero-content{max-width:800px;padding-top:5.5rem;padding-bottom:0;text-align:left;display:flex;flex-direction:column;height:calc(100vh - 0px)}
+.hero.chat-active .hero-search{animation:none;opacity:1;margin-bottom:0;position:relative;flex-shrink:0}
+.hero-chat-messages{display:none;flex:1;overflow-y:auto;padding:1rem 0;flex-direction:column;gap:.8rem}
+.hero.chat-active .hero-chat-messages{display:flex}
+.hero-chat-messages::-webkit-scrollbar{width:4px}
+.hero-chat-messages::-webkit-scrollbar-track{background:transparent}
+.hero-chat-messages::-webkit-scrollbar-thumb{background:rgba(245,197,24,.3);border-radius:2px}
+.hero-chat-msg{padding:.8rem 1.2rem;border-radius:4px;font-family:'Barlow',sans-serif;font-size:.95rem;line-height:1.6;max-width:80%;word-wrap:break-word}
+.hero-chat-msg.user{background:var(--corn-dark);color:var(--corn-light);align-self:flex-end;border:1px solid rgba(245,197,24,.15)}
+.hero-chat-msg.assistant{background:var(--corn-steel);color:var(--corn-light);align-self:flex-start;border:1px solid rgba(245,197,24,.1)}
+.hero-chat-typing{display:flex;gap:4px;padding:.8rem 1.2rem;align-self:flex-start}
+.hero-chat-typing span{width:6px;height:6px;background:var(--corn-yellow);border-radius:50%;animation:typingBounce 1.4s infinite ease-in-out}
+.hero-chat-typing span:nth-child(2){animation-delay:.2s}
+.hero-chat-typing span:nth-child(3){animation-delay:.4s}
+.hero-back-btn{display:none;font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(232,230,225,.4);background:none;border:none;cursor:pointer;padding:.5rem 0;margin-bottom:.5rem;transition:color .3s;align-self:flex-start}
+.hero-back-btn:hover{color:var(--corn-yellow)}
+.hero.chat-active .hero-back-btn{display:inline-block}
+/* btn-primary/secondary */
 .btn-primary{font-family:'Space Mono',monospace;font-size:.85rem;text-transform:uppercase;letter-spacing:.15em;padding:1.1rem 2.5rem;background:var(--corn-yellow);color:var(--corn-dark);text-decoration:none;font-weight:700;transition:all .3s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));display:inline-flex;align-items:center;gap:.8rem;border:none;cursor:pointer}
 .btn-primary:hover{background:var(--corn-accent);color:#fff;transform:translateY(-2px)}
 .btn-secondary{font-family:'Space Mono',monospace;font-size:.85rem;text-transform:uppercase;letter-spacing:.15em;padding:1.1rem 2.5rem;background:transparent;color:var(--corn-light);text-decoration:none;border:1px solid rgba(232,230,225,.3);transition:all .3s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
 .btn-secondary:hover{border-color:var(--corn-yellow);color:var(--corn-yellow)}
-.hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(26,26,26,.9);border-top:1px solid rgba(245,197,24,.2);display:flex;justify-content:center;z-index:2}
-.stat-item{padding:2rem 4rem;text-align:center;border-right:1px solid rgba(245,197,24,.1)}
-.stat-item:last-child{border-right:none}
-.stat-number{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--corn-yellow);line-height:1}
-.stat-label{font-family:'Space Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(232,230,225,.5);margin-top:.3rem}
 section{padding:7rem 3rem;max-width:1200px;margin:0 auto}
 .section-tag{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--corn-yellow);margin-bottom:1rem;display:flex;align-items:center;gap:1rem}
 .section-tag::before{content:'';width:30px;height:2px;background:var(--corn-yellow)}
@@ -126,7 +152,7 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 .reveal.visible{opacity:1;transform:translateY(0)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101;background:none;border:none;padding:.5rem}
 .hamburger span{width:28px;height:2px;background:var(--corn-yellow);transition:all .3s}
-/* Chat widget */
+/* Floating chat widget */
 .chat-fab{position:fixed;bottom:2rem;right:2rem;width:60px;height:60px;border-radius:50%;background:var(--corn-yellow);border:none;cursor:pointer;font-size:2rem;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 4px 20px rgba(245,197,24,.4);transition:all .3s}
 .chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(245,197,24,.6)}
 .chat-window{position:fixed;bottom:6rem;right:2rem;width:380px;max-height:520px;background:var(--corn-dark);border:1px solid rgba(245,197,24,.3);z-index:1000;display:none;flex-direction:column;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));box-shadow:0 8px 40px rgba(0,0,0,.5)}
@@ -157,8 +183,8 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 .catalogue-loading{text-align:center;padding:3rem;font-family:'Space Mono',monospace;color:var(--corn-yellow);font-size:.85rem;letter-spacing:.1em}
 .catalogue-loading .spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(245,197,24,.3);border-top-color:var(--corn-yellow);border-radius:50%;animation:spin .8s linear infinite;margin-right:.8rem;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.hero-content{padding:7rem 1.5rem 4rem}.hero-stats{flex-wrap:wrap}.stat-item{padding:1.2rem 2rem;flex:1;min-width:140px}section{padding:4rem 1.5rem}.catalogue-section{padding:4rem 1.5rem}.process-steps{grid-template-columns:repeat(2,1fr);gap:2rem}.process-steps::before{display:none}.why-grid{grid-template-columns:1fr;gap:2rem}.services-grid{grid-template-columns:1fr}.cta-contact{gap:2rem}.product-table{font-size:.75rem}.product-table th,.product-table td{padding:.6rem .8rem}.chat-window{width:calc(100% - 2rem);right:1rem;bottom:5rem;max-height:60vh}}
-@media(max-width:480px){.process-steps{grid-template-columns:1fr}.hero-actions{flex-direction:column}.btn-primary,.btn-secondary{text-align:center;justify-content:center}}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.hero-content{padding:6rem 1.5rem 3rem}.hero h1{font-size:clamp(2rem,8vw,3rem)}.hero-search-input{font-size:.9rem;padding:.8rem 1rem}.hero-search-btn{padding:.8rem 1.2rem;font-size:.7rem}.hero-chips{gap:.4rem}.hero-chip{font-size:.6rem;padding:.4rem .7rem}.hero-chat-msg{max-width:90%}section{padding:4rem 1.5rem}.catalogue-section{padding:4rem 1.5rem}.process-steps{grid-template-columns:repeat(2,1fr);gap:2rem}.process-steps::before{display:none}.why-grid{grid-template-columns:1fr;gap:2rem}.services-grid{grid-template-columns:1fr}.cta-contact{gap:2rem}.product-table{font-size:.75rem}.product-table th,.product-table td{padding:.6rem .8rem}.chat-window{width:calc(100% - 2rem);right:1rem;bottom:5rem;max-height:60vh}}
+@media(max-width:480px){.process-steps{grid-template-columns:1fr}.hero-search{flex-direction:column}.hero-search-input{border-right:1px solid rgba(245,197,24,.25);border-bottom:none}.hero-search-btn{clip-path:none}}
 </style>
 </head>
 <body>
@@ -173,24 +199,29 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 <a href="#quote" class="nav-cta">Get a Quote</a>
 <button class="hamburger" onclick="this.classList.toggle('active')"><span></span><span></span><span></span></button>
 </nav>
-<section class="hero">
+
+<section class="hero" id="heroSection">
 <div class="hero-grid"></div>
 <div class="hero-content">
-<div class="hero-tag">Sydney Sheet Metal Fabrication</div>
-<h1><span class="yellow">CUSTOM</span><br><span class="outline">ENCLOSURES</span><br>IN STOCK NOW</h1>
-<p class="hero-sub">Over 1,000 enclosures ready to ship from our Sydney warehouse. 316 Stainless Steel, powder-coated mild steel, and meter boxes — all sizes.</p>
-<div class="hero-actions">
-<a href="#catalogue" class="btn-primary">Browse Catalogue →</a>
-<a href="#quote" class="btn-secondary">Custom Order</a>
+<div class="hero-logo">🌽</div>
+<h1>WHAT ENCLOSURE DO YOU NEED?</h1>
+<p class="hero-subtitle">Ask us anything — our AI knows the entire CORN range</p>
+<button class="hero-back-btn" id="heroBackBtn">✕ Back to home</button>
+<div class="hero-chat-messages" id="heroChatMessages"></div>
+<div class="hero-search">
+<input type="text" class="hero-search-input" id="heroSearchInput" placeholder="Describe what you need...">
+<button class="hero-search-btn" id="heroSearchBtn">Send</button>
 </div>
+<div class="hero-browse"><a href="#catalogue">or browse our products ↓</a></div>
+<div class="hero-chips">
+<button class="hero-chip" data-prompt="Outdoor coastal enclosure">Outdoor coastal enclosure</button>
+<button class="hero-chip" data-prompt="IP66 stainless 600x400">IP66 stainless 600x400</button>
+<button class="hero-chip" data-prompt="What's the difference between flat and sloped roof?">Flat vs sloped roof?</button>
+<button class="hero-chip" data-prompt="Meter box for residential">Meter box for residential</button>
 </div>
-<div class="hero-stats">
-<div class="stat-item"><div class="stat-number">1,000+</div><div class="stat-label">Units In Stock</div></div>
-<div class="stat-item"><div class="stat-number">110+</div><div class="stat-label">Product Lines</div></div>
-<div class="stat-item"><div class="stat-number">24HR</div><div class="stat-label">Quote Turnaround</div></div>
-<div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Sydney Stocked</div></div>
 </div>
 </section>
+
 <div class="catalogue-section" id="catalogue">
 <div class="section-tag">Product Catalogue</div>
 <h2 class="section-title reveal">WHAT'S IN STOCK</h2>
@@ -279,7 +310,7 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 </div>
 <footer><p>&copy; 2026 CORN ENCLOSURES — SYDNEY, AUSTRALIA — CORNHUB.AI</p></footer>
 
-<!-- Chat Widget -->
+<!-- Floating Chat Widget -->
 <button class="chat-fab" id="chatFab" title="Chat with CORN AI">🌽</button>
 <div class="chat-window" id="chatWindow">
 <div class="chat-header"><span>🌽 CORN AI Assistant</span><button class="chat-close" id="chatClose">✕</button></div>
@@ -294,40 +325,34 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 
 <script>
 /* ============================================
+   SUPABASE CONFIG
+   ============================================ */
+var SUPABASE_URL='https://pmvgkmiihqyvgjcdcyjw.supabase.co';
+var SUPABASE_KEY='sb_publishable_DEcvBo1uq0dPziHCrUwfTQ_0sq6xkz5';
+
+var CHAT_SYSTEM='You are the CORN Enclosures AI sales assistant. CORN Enclosures is a Sydney-based sheet metal fabrication business selling IP66/65 certified enclosures. Product lines: HDS-S-316 (stainless flat roof), HDS-I-316 (stainless sloped roof), HDS-S-PCMS (powder coated mild steel in RAL 7035 grey and RAL 2000 orange), HDS-F-316 (floor standing), HDS-P-316 (push button boxes), HDS-T-316 (terminal boxes), MGF (meter boxes). Over 1000 units in stock in Sydney. ISO 9001 certified. SGS certified IP ratings. Major clients include BHP, Rio Tinto, Sydney Water, Sydney Trains. Be friendly and direct like a knowledgeable mate. Never quote prices — direct to james@cornhub.ai for pricing. Recommend specific products based on environment and application. Always end with a clear next step: email james@cornhub.ai or call 1300 921 088. When talking to customers, use friendly product names instead of model codes. Say \"our Stainless Steel Sloped Roof range\" instead of \"HDS-I-316\", \"our Stainless Steel Flat Roof range\" instead of \"HDS-S-316\", \"our Powder Coat range\" instead of \"HDS-S-PCMS\", \"our Floor Standing range\" instead of \"HDS-F-316\", \"our Push Button Boxes\" instead of \"HDS-P-316\", \"our Terminal Boxes\" instead of \"HDS-T-316\", and \"our Meter Boxes\" instead of \"MGF\". Only use model codes when giving specific product recommendations with sizes, like \"the HDS-S-600400300 would be perfect for that\".';
+
+/* ============================================
    SUPABASE DATA SOURCE
    ============================================ */
-const SUPABASE_URL='https://pmvgkmiihqyvgjcdcyjw.supabase.co';
-const SUPABASE_KEY='sb_publishable_DEcvBo1uq0dPziHCrUwfTQ_0sq6xkz5';
-
-let PRODUCTS=[];
-let currentFilter='all',currentSort={key:'qty',dir:'desc'},searchTerm='';
+var PRODUCTS=[];
+var currentFilter='all',currentSort={key:'qty',dir:'desc'},searchTerm='';
 
 async function loadProducts(){
 try{
-const res=await fetch(SUPABASE_URL+'/rest/v1/products?select=*,inventory(quantity)',{
+var res=await fetch(SUPABASE_URL+'/rest/v1/products?select=*,inventory(quantity)',{
 headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}
 });
 if(!res.ok)throw new Error('HTTP '+res.status);
-const data=await res.json();
+var data=await res.json();
 PRODUCTS=data.map(function(p){
-const qty=(p.inventory||[]).reduce(function(sum,inv){return sum+(inv.quantity||0)},0);
+var qty=(p.inventory||[]).reduce(function(sum,inv){return sum+(inv.quantity||0)},0);
 return{
-model:p.model||'',
-h:p.h||0,
-w:p.w||0,
-d:p.d||0,
-qty:qty,
-weight:p.weight||'\u2014',
-material:p.material||'',
-finish:p.finish||'',
-type:p.type||'',
-lock:p.lock||'',
-doors:p.doors||'',
-category:p.category||'',
-series:p.series||'',
-ip:p.ip||'\u2014',
-size:p.size||(p.h+'\u00d7'+p.w+'\u00d7'+p.d+'mm'),
-mto:p.mto||false
+model:p.model||'',h:p.h||0,w:p.w||0,d:p.d||0,qty:qty,
+weight:p.weight||'\u2014',material:p.material||'',finish:p.finish||'',
+type:p.type||'',lock:p.lock||'',doors:p.doors||'',
+category:p.category||'',series:p.series||'',ip:p.ip||'\u2014',
+size:p.size||(p.h+'\u00d7'+p.w+'\u00d7'+p.d+'mm'),mto:p.mto||false
 };
 });
 renderTable();
@@ -351,35 +376,131 @@ document.querySelectorAll('.product-table th[data-sort]').forEach(function(th){t
 document.getElementById('searchInput').addEventListener('input',function(e){searchTerm=e.target.value;renderTable()});
 var reveals=document.querySelectorAll('.reveal');var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});reveals.forEach(function(el){observer.observe(el)});
 
-// Load products from Supabase on page load
 loadProducts();
 
 /* ============================================
-   AI CHAT WIDGET
+   SHARED CHAT HELPERS
    ============================================ */
-var chatFab=document.getElementById('chatFab');
-var chatWindow=document.getElementById('chatWindow');
-var chatClose=document.getElementById('chatClose');
-var chatInput=document.getElementById('chatInput');
-var chatSend=document.getElementById('chatSend');
-var chatMessages=document.getElementById('chatMessages');
-var chatHistory=[];
-var chatBusy=false;
-
-var CHAT_SYSTEM='You are the CORN Enclosures AI sales assistant. CORN Enclosures is a Sydney-based sheet metal fabrication business selling IP66/65 certified enclosures. Product lines: HDS-S-316 (stainless flat roof), HDS-I-316 (stainless sloped roof), HDS-S-PCMS (powder coated mild steel in RAL 7035 grey and RAL 2000 orange), HDS-F-316 (floor standing), HDS-P-316 (push button boxes), HDS-T-316 (terminal boxes), MGF (meter boxes). Over 1000 units in stock in Sydney. ISO 9001 certified. SGS certified IP ratings. Major clients include BHP, Rio Tinto, Sydney Water, Sydney Trains. Be friendly and direct like a knowledgeable mate. Never quote prices — direct to james@cornhub.ai for pricing. Recommend specific products based on environment and application. Always end with a clear next step: email james@cornhub.ai or call 1300 921 088. When talking to customers, use friendly product names instead of model codes. Say \"our Stainless Steel Sloped Roof range\" instead of \"HDS-I-316\", \"our Stainless Steel Flat Roof range\" instead of \"HDS-S-316\", \"our Powder Coat range\" instead of \"HDS-S-PCMS\", \"our Floor Standing range\" instead of \"HDS-F-316\", \"our Push Button Boxes\" instead of \"HDS-P-316\", \"our Terminal Boxes\" instead of \"HDS-T-316\", and \"our Meter Boxes\" instead of \"MGF\". Only use model codes when giving specific product recommendations with sizes, like \"the HDS-S-600400300 would be perfect for that\".';
-
-chatFab.addEventListener('click',function(){
-chatWindow.classList.toggle('open');
-if(chatWindow.classList.contains('open'))chatInput.focus();
-});
-chatClose.addEventListener('click',function(){chatWindow.classList.remove('open')});
-
 function formatChat(text){
 var s=text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
 s=s.replace(/\n/g,'<br>');
 return s;
 }
+
+async function callCornAI(messages){
+var res=await fetch(SUPABASE_URL+'/functions/v1/super-task',{
+method:'POST',
+headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY},
+body:JSON.stringify({messages:messages})
+});
+var data=await res.json();
+return(data.content&&data.content[0]&&data.content[0].text)||'Sorry, I had trouble responding. Please email james@cornhub.ai for help.';
+}
+
+/* ============================================
+   HERO AI CHAT
+   ============================================ */
+var heroSection=document.getElementById('heroSection');
+var heroInput=document.getElementById('heroSearchInput');
+var heroBtn=document.getElementById('heroSearchBtn');
+var heroMsgs=document.getElementById('heroChatMessages');
+var heroBackBtn=document.getElementById('heroBackBtn');
+var heroHistory=[];
+var heroBusy=false;
+
+function heroAddMsg(role,text){
+var div=document.createElement('div');
+div.className='hero-chat-msg '+role;
+if(role==='assistant'){div.innerHTML=formatChat(text)}else{div.textContent=text}
+heroMsgs.appendChild(div);
+heroMsgs.scrollTop=heroMsgs.scrollHeight;
+return div;
+}
+
+function heroShowTyping(){
+var div=document.createElement('div');
+div.className='hero-chat-typing';
+div.id='heroTyping';
+div.innerHTML='<span></span><span></span><span></span>';
+heroMsgs.appendChild(div);
+heroMsgs.scrollTop=heroMsgs.scrollHeight;
+}
+
+function heroRemoveTyping(){
+var el=document.getElementById('heroTyping');
+if(el)el.remove();
+}
+
+function activateHeroChat(){
+heroSection.classList.add('chat-active');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function resetHeroChat(){
+heroSection.classList.remove('chat-active');
+heroMsgs.innerHTML='';
+heroHistory=[];
+heroInput.value='';
+heroBusy=false;
+heroBtn.disabled=false;
+}
+
+async function heroSend(){
+var text=heroInput.value.trim();
+if(!text||heroBusy)return;
+heroInput.value='';
+heroBusy=true;
+heroBtn.disabled=true;
+
+if(!heroSection.classList.contains('chat-active'))activateHeroChat();
+
+heroAddMsg('user',text);
+heroHistory.push({role:'user',content:text});
+heroShowTyping();
+
+try{
+var reply=await callCornAI(heroHistory);
+heroHistory.push({role:'assistant',content:reply});
+heroRemoveTyping();
+heroAddMsg('assistant',reply);
+}catch(err){
+heroRemoveTyping();
+heroAddMsg('assistant','Sorry, something went wrong. Please email james@cornhub.ai or call 1300 921 088.');
+}
+heroBusy=false;
+heroBtn.disabled=false;
+heroInput.focus();
+}
+
+heroBtn.addEventListener('click',heroSend);
+heroInput.addEventListener('keydown',function(e){if(e.key==='Enter')heroSend()});
+heroBackBtn.addEventListener('click',resetHeroChat);
+
+document.querySelectorAll('.hero-chip').forEach(function(chip){
+chip.addEventListener('click',function(){
+heroInput.value=chip.dataset.prompt;
+heroSend();
+});
+});
+
+/* ============================================
+   FLOATING CHAT WIDGET
+   ============================================ */
+var chatFab=document.getElementById('chatFab');
+var chatWindow=document.getElementById('chatWindow');
+var chatCloseBtn=document.getElementById('chatClose');
+var chatInput=document.getElementById('chatInput');
+var chatSendBtn=document.getElementById('chatSend');
+var chatMessages=document.getElementById('chatMessages');
+var chatHistory=[];
+var chatBusy=false;
+
+chatFab.addEventListener('click',function(){
+chatWindow.classList.toggle('open');
+if(chatWindow.classList.contains('open'))chatInput.focus();
+});
+chatCloseBtn.addEventListener('click',function(){chatWindow.classList.remove('open')});
 
 function addChatMsg(role,text){
 var div=document.createElement('div');
@@ -409,24 +530,14 @@ var text=chatInput.value.trim();
 if(!text||chatBusy)return;
 chatInput.value='';
 chatBusy=true;
-chatSend.disabled=true;
+chatSendBtn.disabled=true;
 
 addChatMsg('user',text);
 chatHistory.push({role:'user',content:text});
 showTyping();
 
 try{
-var res=await fetch(SUPABASE_URL+'/functions/v1/super-task',{
-method:'POST',
-headers:{
-'Content-Type':'application/json',
-'apikey':SUPABASE_KEY,
-'Authorization':'Bearer '+SUPABASE_KEY
-},
-body:JSON.stringify({messages:chatHistory})
-});
-var data=await res.json();
-var reply=(data.content&&data.content[0]&&data.content[0].text)||'Sorry, I had trouble responding. Please email james@cornhub.ai for help.';
+var reply=await callCornAI(chatHistory);
 chatHistory.push({role:'assistant',content:reply});
 removeTyping();
 addChatMsg('assistant',reply);
@@ -435,10 +546,10 @@ removeTyping();
 addChatMsg('assistant','Sorry, something went wrong. Please email james@cornhub.ai or call 1300 921 088.');
 }
 chatBusy=false;
-chatSend.disabled=false;
+chatSendBtn.disabled=false;
 }
 
-chatSend.addEventListener('click',sendChat);
+chatSendBtn.addEventListener('click',sendChat);
 chatInput.addEventListener('keydown',function(e){if(e.key==='Enter')sendChat()});
 </script>
 </body>
