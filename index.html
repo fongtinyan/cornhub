@@ -126,7 +126,38 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 .reveal.visible{opacity:1;transform:translateY(0)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101;background:none;border:none;padding:.5rem}
 .hamburger span{width:28px;height:2px;background:var(--corn-yellow);transition:all .3s}
-@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.hero-content{padding:7rem 1.5rem 4rem}.hero-stats{flex-wrap:wrap}.stat-item{padding:1.2rem 2rem;flex:1;min-width:140px}section{padding:4rem 1.5rem}.catalogue-section{padding:4rem 1.5rem}.process-steps{grid-template-columns:repeat(2,1fr);gap:2rem}.process-steps::before{display:none}.why-grid{grid-template-columns:1fr;gap:2rem}.services-grid{grid-template-columns:1fr}.cta-contact{gap:2rem}.product-table{font-size:.75rem}.product-table th,.product-table td{padding:.6rem .8rem}}
+/* Chat widget */
+.chat-fab{position:fixed;bottom:2rem;right:2rem;width:60px;height:60px;border-radius:50%;background:var(--corn-yellow);border:none;cursor:pointer;font-size:2rem;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 4px 20px rgba(245,197,24,.4);transition:all .3s}
+.chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(245,197,24,.6)}
+.chat-window{position:fixed;bottom:6rem;right:2rem;width:380px;max-height:520px;background:var(--corn-dark);border:1px solid rgba(245,197,24,.3);z-index:1000;display:none;flex-direction:column;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.chat-window.open{display:flex}
+.chat-header{padding:1rem 1.2rem;background:rgba(245,197,24,.1);border-bottom:1px solid rgba(245,197,24,.2);font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--corn-yellow);display:flex;justify-content:space-between;align-items:center}
+.chat-close{background:none;border:none;color:var(--corn-light);cursor:pointer;font-size:1.2rem;padding:0;line-height:1}
+.chat-close:hover{color:var(--corn-yellow)}
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.8rem;max-height:350px}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-track{background:transparent}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(245,197,24,.3);border-radius:2px}
+.chat-msg{padding:.6rem 1rem;border-radius:4px;font-family:'Barlow',sans-serif;font-size:.9rem;line-height:1.5;max-width:85%;word-wrap:break-word}
+.chat-msg.user{background:var(--corn-yellow);color:var(--corn-dark);align-self:flex-end;font-weight:500}
+.chat-msg.assistant{background:rgba(42,45,53,.8);color:var(--corn-light);align-self:flex-start;border:1px solid rgba(245,197,24,.1)}
+.chat-typing{display:flex;gap:4px;padding:.6rem 1rem;align-self:flex-start}
+.chat-typing span{width:6px;height:6px;background:var(--corn-yellow);border-radius:50%;animation:typingBounce 1.4s infinite ease-in-out}
+.chat-typing span:nth-child(2){animation-delay:.2s}
+.chat-typing span:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,80%,100%{transform:scale(0);opacity:.4}40%{transform:scale(1);opacity:1}}
+.chat-input-wrap{display:flex;border-top:1px solid rgba(245,197,24,.2);padding:.6rem}
+.chat-input{flex:1;background:rgba(42,45,53,.6);border:1px solid rgba(245,197,24,.2);color:var(--corn-light);font-family:'Barlow',sans-serif;font-size:.9rem;padding:.6rem .8rem;outline:none;transition:border-color .3s}
+.chat-input::placeholder{color:rgba(232,230,225,.3)}
+.chat-input:focus{border-color:var(--corn-yellow)}
+.chat-send{background:var(--corn-yellow);border:none;color:var(--corn-dark);font-family:'Space Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;padding:.6rem 1rem;cursor:pointer;font-weight:700;transition:all .3s}
+.chat-send:hover{background:var(--corn-accent);color:#fff}
+.chat-send:disabled{opacity:.5;cursor:not-allowed}
+/* Loading state */
+.catalogue-loading{text-align:center;padding:3rem;font-family:'Space Mono',monospace;color:var(--corn-yellow);font-size:.85rem;letter-spacing:.1em}
+.catalogue-loading .spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(245,197,24,.3);border-top-color:var(--corn-yellow);border-radius:50%;animation:spin .8s linear infinite;margin-right:.8rem;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.hero-content{padding:7rem 1.5rem 4rem}.hero-stats{flex-wrap:wrap}.stat-item{padding:1.2rem 2rem;flex:1;min-width:140px}section{padding:4rem 1.5rem}.catalogue-section{padding:4rem 1.5rem}.process-steps{grid-template-columns:repeat(2,1fr);gap:2rem}.process-steps::before{display:none}.why-grid{grid-template-columns:1fr;gap:2rem}.services-grid{grid-template-columns:1fr}.cta-contact{gap:2rem}.product-table{font-size:.75rem}.product-table th,.product-table td{padding:.6rem .8rem}.chat-window{width:calc(100% - 2rem);right:1rem;bottom:5rem;max-height:60vh}}
 @media(max-width:480px){.process-steps{grid-template-columns:1fr}.hero-actions{flex-direction:column}.btn-primary,.btn-secondary{text-align:center;justify-content:center}}
 </style>
 </head>
@@ -178,7 +209,7 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 <span class="search-icon">&#128269;</span>
 <input type="text" class="search-input" placeholder="Search by model, size, material..." id="searchInput">
 </div>
-<div class="catalogue-stats reveal" id="catalogueStats">Showing <span id="showCount">64</span> products — <span id="stockCount">1,038</span> total units in stock</div>
+<div class="catalogue-stats reveal" id="catalogueStats">Showing <span id="showCount">0</span> products — <span id="stockCount">0</span> total units in stock</div>
 <div class="product-table-wrap reveal">
 <table class="product-table" id="productTable">
 <thead><tr>
@@ -193,7 +224,9 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 <th data-sort="qty">Stock <span class="sort-arrow">↕</span></th>
 <th></th>
 </tr></thead>
-<tbody id="productBody"></tbody>
+<tbody id="productBody">
+<tr><td colspan="10"><div class="catalogue-loading"><span class="spinner"></span>Loading catalogue from database...</div></td></tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -245,135 +278,166 @@ footer{padding:3rem;text-align:center;border-top:1px solid rgba(245,197,24,.1);f
 </div>
 </div>
 <footer><p>&copy; 2026 CORN ENCLOSURES — SYDNEY, AUSTRALIA — CORNHUB.AI</p></footer>
+
+<!-- Chat Widget -->
+<button class="chat-fab" id="chatFab" title="Chat with CORN AI">🌽</button>
+<div class="chat-window" id="chatWindow">
+<div class="chat-header"><span>🌽 CORN AI Assistant</span><button class="chat-close" id="chatClose">✕</button></div>
+<div class="chat-messages" id="chatMessages">
+<div class="chat-msg assistant">G'day! I'm the CORN AI assistant. Ask me anything about our enclosures — materials, IP ratings, sizes, or what suits your application. How can I help?</div>
+</div>
+<div class="chat-input-wrap">
+<input type="text" class="chat-input" id="chatInput" placeholder="Ask about enclosures...">
+<button class="chat-send" id="chatSend">Send</button>
+</div>
+</div>
+
 <script>
-const PRODUCTS=[
-// === HDS-S-316: 316 Stainless Steel, Flat Roof, Wall Mount ===
-{"model":"HDS-S-200200150-316","h":200,"w":200,"d":150,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"200\u00d7200\u00d7150mm","mto":true},
-{"model":"HDS-S-300200150-316","h":300,"w":200,"d":150,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"300\u00d7200\u00d7150mm","mto":true},
-{"model":"HDS-S-300300150-316","h":300,"w":300,"d":150,"qty":2,"weight":"6 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Screw Lid","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"300\u00d7300\u00d7150mm"},
-{"model":"HDS-S-300300200-316","h":300,"w":300,"d":200,"qty":5,"weight":"8 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"300\u00d7300\u00d7200mm"},
-{"model":"HDS-S-400300200-316","h":400,"w":300,"d":200,"qty":11,"weight":"10 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"400\u00d7300\u00d7200mm"},
-{"model":"HDS-S-400400200-316","h":400,"w":400,"d":200,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"400\u00d7400\u00d7200mm","mto":true},
-{"model":"HDS-S-400600200-316","h":400,"w":600,"d":200,"qty":3,"weight":"12 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"400\u00d7600\u00d7200mm"},
-{"model":"HDS-S-500400200-316","h":500,"w":400,"d":200,"qty":2,"weight":"14 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"500\u00d7400\u00d7200mm"},
-{"model":"HDS-S-500500200-316","h":500,"w":500,"d":200,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"500\u00d7500\u00d7200mm","mto":true},
-{"model":"HDS-S-600400200-316","h":600,"w":400,"d":200,"qty":17,"weight":"16 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"600\u00d7400\u00d7200mm"},
-{"model":"HDS-S-600600200-316","h":600,"w":600,"d":200,"qty":8,"weight":"23 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"600\u00d7600\u00d7200mm"},
-{"model":"HDS-S-600600300-316","h":600,"w":600,"d":300,"qty":7,"weight":"25 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"600\u00d7600\u00d7300mm"},
-{"model":"HDS-S-800400200-316","h":800,"w":400,"d":200,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"800\u00d7400\u00d7200mm","mto":true},
-{"model":"HDS-S-800600200-316","h":800,"w":600,"d":200,"qty":8,"weight":"28.5 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"800\u00d7600\u00d7200mm"},
-{"model":"HDS-S-800600300-316","h":800,"w":600,"d":300,"qty":10,"weight":"32.5 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"800\u00d7600\u00d7300mm"},
-{"model":"HDS-S-800800300-316","h":800,"w":800,"d":300,"qty":1,"weight":"40 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"800\u00d7800\u00d7300mm"},
-{"model":"HDS-S-1000600300-316","h":1000,"w":600,"d":300,"qty":2,"weight":"38 kg","material":"316 Stainless Steel","finish":"Orange (Returned)","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"1000\u00d7600\u00d7300mm"},
-{"model":"HDS-S-1000800300-316","h":1000,"w":800,"d":300,"qty":9,"weight":"49 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"1000\u00d7800\u00d7300mm"},
-{"model":"HDS-S-1000800400-316","h":1000,"w":800,"d":400,"qty":1,"weight":"52 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"1000\u00d7800\u00d7400mm"},
-{"model":"HDS-S-1200800400-316","h":1200,"w":800,"d":400,"qty":8,"weight":"65.5 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"1200\u00d7800\u00d7400mm"},
-{"model":"HDS-S-12001000300-DD-316","h":1200,"w":1000,"d":300,"qty":4,"weight":"70 kg","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Spanner Lock / Swing Handle","doors":"Double Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"1200\u00d71000\u00d7300mm"},
-{"model":"HDS-S-1500800400-316","h":1500,"w":800,"d":400,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Flat Roof","lock":"Swing Handle","doors":"Single Door","category":"316 SS Flat Roof","series":"HDS-S-316","ip":"IP66/65","size":"1500\u00d7800\u00d7400mm","mto":true},
-// === HDS-I-316: 316 Stainless Steel, Sloped Roof, Wall Mount ===
-{"model":"HDS-I-300200150-316","h":300,"w":200,"d":150,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Screw Lid","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"300\u00d7200\u00d7150mm","mto":true},
-{"model":"HDS-I-300300125-316","h":300,"w":300,"d":125,"qty":4,"weight":"7.4 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Screw Lid","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"300\u00d7300\u00d7125mm"},
-{"model":"HDS-I-400300200-316","h":400,"w":300,"d":200,"qty":12,"weight":"10.5 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"400\u00d7300\u00d7200mm"},
-{"model":"HDS-I-400300250-316","h":400,"w":300,"d":250,"qty":2,"weight":"12.4 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"400\u00d7300\u00d7250mm"},
-{"model":"HDS-I-400400200-316","h":400,"w":400,"d":200,"qty":22,"weight":"13.2 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"400\u00d7400\u00d7200mm"},
-{"model":"HDS-I-400400250-316","h":400,"w":400,"d":250,"qty":2,"weight":"15 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"400\u00d7400\u00d7250mm"},
-{"model":"HDS-I-400600200-316","h":400,"w":600,"d":200,"qty":2,"weight":"19 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"400\u00d7600\u00d7200mm"},
-{"model":"HDS-I-400600250-316","h":400,"w":600,"d":250,"qty":8,"weight":"21.2 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"400\u00d7600\u00d7250mm"},
-{"model":"HDS-I-500500200-316","h":500,"w":500,"d":200,"qty":7,"weight":"19.2 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"500\u00d7500\u00d7200mm"},
-{"model":"HDS-I-600400200-316","h":600,"w":400,"d":200,"qty":10,"weight":"18.3 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"600\u00d7400\u00d7200mm"},
-{"model":"HDS-I-600400250-316","h":600,"w":400,"d":250,"qty":9,"weight":"20.3 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"600\u00d7400\u00d7250mm"},
-{"model":"HDS-I-600600200-316","h":600,"w":600,"d":200,"qty":8,"weight":"25.1 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"600\u00d7600\u00d7200mm"},
-{"model":"HDS-I-600600250-316","h":600,"w":600,"d":250,"qty":4,"weight":"27.5 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"600\u00d7600\u00d7250mm"},
-{"model":"HDS-I-800400250-316","h":800,"w":400,"d":250,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"800\u00d7400\u00d7250mm","mto":true},
-{"model":"HDS-I-800600300-316","h":800,"w":600,"d":300,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"800\u00d7600\u00d7300mm","mto":true},
-{"model":"HDS-I-1000600300-316","h":1000,"w":600,"d":300,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"1000\u00d7600\u00d7300mm","mto":true},
-{"model":"HDS-I-1200600300-316","h":1200,"w":600,"d":300,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Sloped Roof","lock":"Spanner Lock","doors":"Single Door","category":"316 SS Sloped Roof","series":"HDS-I-316","ip":"IP66/65","size":"1200\u00d7600\u00d7300mm","mto":true},
-// === HDS-S-PCMS: Powder Coated Mild Steel, RAL 7035 Light Grey ===
-{"model":"HDS-S-300200150-7035","h":300,"w":200,"d":150,"qty":7,"weight":"3.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"300\u00d7200\u00d7150mm"},
-{"model":"HDS-S-300300200-7035","h":300,"w":300,"d":200,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"300\u00d7300\u00d7200mm","mto":true},
-{"model":"HDS-S-400300200-7035","h":400,"w":300,"d":200,"qty":18,"weight":"9.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"400\u00d7300\u00d7200mm"},
-{"model":"HDS-S-400400200-7035","h":400,"w":400,"d":200,"qty":29,"weight":"11.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"400\u00d7400\u00d7200mm"},
-{"model":"HDS-S-500400200-7035","h":500,"w":400,"d":200,"qty":31,"weight":"12.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"500\u00d7400\u00d7200mm"},
-{"model":"HDS-S-500500200-7035","h":500,"w":500,"d":200,"qty":23,"weight":"16.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"500\u00d7500\u00d7200mm"},
-{"model":"HDS-S-600400200-7035","h":600,"w":400,"d":200,"qty":14,"weight":"16.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7400\u00d7200mm"},
-{"model":"HDS-S-600400300-7035","h":600,"w":400,"d":300,"qty":14,"weight":"25.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7400\u00d7300mm"},
-{"model":"HDS-S-600600200-7035","h":600,"w":600,"d":200,"qty":22,"weight":"24 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7600\u00d7200mm"},
-{"model":"HDS-S-600600300-7035","h":600,"w":600,"d":300,"qty":16,"weight":"25.5 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7600\u00d7300mm"},
-{"model":"HDS-S-800600200-7035","h":800,"w":600,"d":200,"qty":8,"weight":"29.6 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"800\u00d7600\u00d7200mm"},
-{"model":"HDS-S-800600300-7035","h":800,"w":600,"d":300,"qty":5,"weight":"33.2 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"800\u00d7600\u00d7300mm"},
-{"model":"HDS-S-800800300-7035","h":800,"w":800,"d":300,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"800\u00d7800\u00d7300mm","mto":true},
-{"model":"HDS-S-1000800300-7035","h":1000,"w":800,"d":300,"qty":6,"weight":"49 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"1000\u00d7800\u00d7300mm"},
-{"model":"HDS-S-10001000400-7035","h":1000,"w":1000,"d":400,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"1000\u00d71000\u00d7400mm","mto":true},
-{"model":"HDS-S-1200800400-7035","h":1200,"w":800,"d":400,"qty":2,"weight":"62 kg","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"1200\u00d7800\u00d7400mm"},
-{"model":"HDS-S-12001000400-7035","h":1200,"w":1000,"d":400,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 7035 Light Grey","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Grey","series":"HDS-S-PCMS","ip":"IP66","size":"1200\u00d71000\u00d7400mm","mto":true},
-// === HDS-S-PCMS: Powder Coated Mild Steel, RAL 2000 Orange ===
-{"model":"HDS-S-300200150-2000","h":300,"w":200,"d":150,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"300\u00d7200\u00d7150mm","mto":true},
-{"model":"HDS-S-300200400-2000","h":300,"w":200,"d":400,"qty":3,"weight":"9.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"300\u00d7200\u00d7400mm"},
-{"model":"HDS-S-400300200-2000","h":400,"w":300,"d":200,"qty":12,"weight":"9.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"400\u00d7300\u00d7200mm"},
-{"model":"HDS-S-400300400-2000","h":400,"w":300,"d":400,"qty":2,"weight":"12.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"400\u00d7300\u00d7400mm"},
-{"model":"HDS-S-400400200-2000","h":400,"w":400,"d":200,"qty":10,"weight":"11.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"400\u00d7400\u00d7200mm"},
-{"model":"HDS-S-500400200-2000","h":500,"w":400,"d":200,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"500\u00d7400\u00d7200mm","mto":true},
-{"model":"HDS-S-500500200-2000","h":500,"w":500,"d":200,"qty":3,"weight":"16.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"500\u00d7500\u00d7200mm"},
-{"model":"HDS-S-600400200-2000","h":600,"w":400,"d":200,"qty":6,"weight":"16.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7400\u00d7200mm"},
-{"model":"HDS-S-600400300-2000","h":600,"w":400,"d":300,"qty":10,"weight":"18.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7400\u00d7300mm"},
-{"model":"HDS-S-600600200-2000","h":600,"w":600,"d":200,"qty":13,"weight":"24 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7600\u00d7200mm"},
-{"model":"HDS-S-600600300-2000","h":600,"w":600,"d":300,"qty":10,"weight":"25.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"600\u00d7600\u00d7300mm"},
-{"model":"HDS-S-700500200-2000","h":700,"w":500,"d":200,"qty":4,"weight":"21.5 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"700\u00d7500\u00d7200mm"},
-{"model":"HDS-S-800600200-2000","h":800,"w":600,"d":200,"qty":2,"weight":"30 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"800\u00d7600\u00d7200mm"},
-{"model":"HDS-S-800800200-2000","h":800,"w":800,"d":200,"qty":3,"weight":"36 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"800\u00d7800\u00d7200mm"},
-{"model":"HDS-S-1000600200-2000","h":1000,"w":600,"d":200,"qty":3,"weight":"35 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"1000\u00d7600\u00d7200mm"},
-{"model":"HDS-S-1000800300-2000","h":1000,"w":800,"d":300,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"1000\u00d7800\u00d7300mm","mto":true},
-{"model":"HDS-S-1200600200-2000","h":1200,"w":600,"d":200,"qty":1,"weight":"45 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"1200\u00d7600\u00d7200mm"},
-{"model":"HDS-S-1200800200-2000","h":1200,"w":800,"d":200,"qty":3,"weight":"45 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"1200\u00d7800\u00d7200mm"},
-{"model":"HDS-S-1200800400-2000","h":1200,"w":800,"d":400,"qty":3,"weight":"62 kg","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"1200\u00d7800\u00d7400mm"},
-{"model":"HDS-S-12001000400-2000","h":1200,"w":1000,"d":400,"qty":0,"weight":"\u2014","material":"Mild Steel","finish":"RAL 2000 Orange","type":"Flat Roof","lock":"Spanner Lock","doors":"Single Door","category":"Powder Coat Orange","series":"HDS-S-PCMS","ip":"IP66","size":"1200\u00d71000\u00d7400mm","mto":true},
-// === HDS-F-316: 316 Stainless Steel, Floor Standing ===
-{"model":"HDS-F-1400800400-316","h":1400,"w":800,"d":400,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"1400\u00d7800\u00d7400mm","mto":true},
-{"model":"HDS-F-1600800400-316","h":1600,"w":800,"d":400,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"1600\u00d7800\u00d7400mm","mto":true},
-{"model":"HDS-F-1800800400-316","h":1800,"w":800,"d":400,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"1800\u00d7800\u00d7400mm","mto":true},
-{"model":"HDS-F-1800800500-316","h":1800,"w":800,"d":500,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"1800\u00d7800\u00d7500mm","mto":true},
-{"model":"HDS-F-2000800400-316","h":2000,"w":800,"d":400,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"2000\u00d7800\u00d7400mm","mto":true},
-{"model":"HDS-F-2000800500-316","h":2000,"w":800,"d":500,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"2000\u00d7800\u00d7500mm","mto":true},
-{"model":"HDS-F-2200800500-316","h":2200,"w":800,"d":500,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"N4 Satin / 2B Interior","type":"Floor Standing","lock":"Quarter Turn X1","doors":"Single Door","category":"316 SS Floor Standing","series":"HDS-F-316","ip":"IP65","size":"2200\u00d7800\u00d7500mm","mto":true},
-// === HDS-P-316: 316 Stainless Steel, Push Button Boxes ===
-{"model":"HDS-P-8585080-316","h":85,"w":85,"d":80,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"85\u00d785\u00d780mm","mto":true},
-{"model":"HDS-P-1208085-316","h":120,"w":80,"d":85,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"120\u00d780\u00d785mm","mto":true},
-{"model":"HDS-P-1501080-316","h":150,"w":100,"d":80,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"150\u00d7100\u00d780mm","mto":true},
-{"model":"HDS-P-200150100-316","h":200,"w":150,"d":100,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"200\u00d7150\u00d7100mm","mto":true},
-{"model":"HDS-P-200200100-316","h":200,"w":200,"d":100,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"200\u00d7200\u00d7100mm","mto":true},
-{"model":"HDS-P-300200100-316","h":300,"w":200,"d":100,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"300\u00d7200\u00d7100mm","mto":true},
-{"model":"HDS-P-300200125-316","h":300,"w":200,"d":125,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"300\u00d7200\u00d7125mm","mto":true},
-{"model":"HDS-P-400300125-316","h":400,"w":300,"d":125,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Push Button","lock":"Screw Lid","doors":"\u2014","category":"316 SS Push Button","series":"HDS-P-316","ip":"IP66/65","size":"400\u00d7300\u00d7125mm","mto":true},
-// === HDS-T-316: 316 Stainless Steel, Terminal Boxes ===
-{"model":"HDS-T-8585080-316","h":85,"w":85,"d":80,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"85\u00d785\u00d780mm","mto":true},
-{"model":"HDS-T-1208085-316","h":120,"w":80,"d":85,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"120\u00d780\u00d785mm","mto":true},
-{"model":"HDS-T-1501080-316","h":150,"w":100,"d":80,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"150\u00d7100\u00d780mm","mto":true},
-{"model":"HDS-T-200150100-316","h":200,"w":150,"d":100,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"200\u00d7150\u00d7100mm","mto":true},
-{"model":"HDS-T-200200100-316","h":200,"w":200,"d":100,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"200\u00d7200\u00d7100mm","mto":true},
-{"model":"HDS-T-300200100-316","h":300,"w":200,"d":100,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"300\u00d7200\u00d7100mm","mto":true},
-{"model":"HDS-T-300200125-316","h":300,"w":200,"d":125,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"300\u00d7200\u00d7125mm","mto":true},
-{"model":"HDS-T-400300125-316","h":400,"w":300,"d":125,"qty":0,"weight":"\u2014","material":"316 Stainless Steel","finish":"Brushed SS","type":"Terminal Box","lock":"Screw Lid","doors":"\u2014","category":"316 SS Terminal Box","series":"HDS-T-316","ip":"IP66/65","size":"400\u00d7300\u00d7125mm","mto":true},
-// === Meter Boxes ===
-{"model":"MGF-300300250-Z275","h":300,"w":300,"d":250,"qty":36,"weight":"5 kg","material":"Galvanised Steel Z275","finish":"Galvanised","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"300\u00d7300\u00d7250mm"},
-{"model":"MGF-400400250-Z275","h":400,"w":400,"d":250,"qty":110,"weight":"8 kg","material":"Galvanised Steel Z275","finish":"Galvanised","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"400\u00d7400\u00d7250mm"},
-{"model":"MGF-500500250-Z275","h":500,"w":500,"d":250,"qty":20,"weight":"12 kg","material":"Galvanised Steel Z275","finish":"Galvanised","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"500\u00d7500\u00d7250mm"},
-{"model":"MGF-605605260-Z275","h":605,"w":605,"d":260,"qty":227,"weight":"15 kg","material":"Galvanised Steel Z275","finish":"Galvanised","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"605\u00d7605\u00d7260mm"},
-{"model":"MGF-605605330-Z275","h":605,"w":605,"d":330,"qty":145,"weight":"18 kg","material":"Galvanised Steel Z275","finish":"Galvanised","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"605\u00d7605\u00d7330mm"},
-{"model":"MGF-605605260-AluGal","h":605,"w":605,"d":260,"qty":26,"weight":"12 kg","material":"Aluminium/Galvanised","finish":"Alu/Gal","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"605\u00d7605\u00d7260mm"},
-{"model":"MGF-900600260-316","h":900,"w":600,"d":260,"qty":3,"weight":"20 kg","material":"316 Stainless Steel","finish":"Brushed SS","type":"Meter Box","lock":"Cleat","doors":"Single Door","category":"Meter Boxes","series":"Meter Boxes","ip":"\u2014","size":"900\u00d7600\u00d7260mm"}
-];
+/* ============================================
+   SUPABASE DATA SOURCE
+   ============================================ */
+const SUPABASE_URL='https://pmvgkmiihqyvgjcdcyjw.supabase.co';
+const SUPABASE_KEY='sb_publishable_DEcvBo1uq0dPziHCrUwfTQ_0sq6xkz5';
+
+let PRODUCTS=[];
 let currentFilter='all',currentSort={key:'qty',dir:'desc'},searchTerm='';
+
+async function loadProducts(){
+try{
+const res=await fetch(SUPABASE_URL+'/rest/v1/products?select=*,inventory(quantity)',{
+headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}
+});
+if(!res.ok)throw new Error('HTTP '+res.status);
+const data=await res.json();
+PRODUCTS=data.map(function(p){
+const qty=(p.inventory||[]).reduce(function(sum,inv){return sum+(inv.quantity||0)},0);
+return{
+model:p.model||'',
+h:p.h||0,
+w:p.w||0,
+d:p.d||0,
+qty:qty,
+weight:p.weight||'\u2014',
+material:p.material||'',
+finish:p.finish||'',
+type:p.type||'',
+lock:p.lock||'',
+doors:p.doors||'',
+category:p.category||'',
+series:p.series||'',
+ip:p.ip||'\u2014',
+size:p.size||(p.h+'\u00d7'+p.w+'\u00d7'+p.d+'mm'),
+mto:p.mto||false
+};
+});
+renderTable();
+}catch(err){
+console.error('Supabase fetch error:',err);
+document.getElementById('productBody').innerHTML='<tr><td colspan="10" style="text-align:center;padding:3rem;font-family:Space Mono,monospace;color:var(--corn-accent)">Failed to load catalogue. Please refresh the page.</td></tr>';
+}
+}
+
+/* ============================================
+   CATALOGUE — FILTERS, SORT, SEARCH, RENDER
+   ============================================ */
 function getCatClass(c){if(c.includes('Flat Roof'))return'ss';if(c.includes('Sloped'))return'sloped';if(c.includes('Grey'))return'grey';if(c.includes('Orange'))return'orange';if(c.includes('Floor'))return'floor';if(c.includes('Push'))return'pushbtn';if(c.includes('Terminal'))return'terminal';if(c.includes('Meter'))return'galv';return''}
 function getStockClass(q){if(q>=20)return'high';if(q>=5)return'medium';if(q>=1)return'low';return'out'}
 function parseWeight(w){return parseFloat(w)||0}
-function sortProducts(p,k,d){return[...p].sort((a,b)=>{let va=a[k],vb=b[k];if(k==='weight'){va=parseWeight(va);vb=parseWeight(vb)}if(k==='size'){va=a.h*1e6+a.w*1e3+a.d;vb=b.h*1e6+b.w*1e3+b.d}if(typeof va==='string'){va=va.toLowerCase();vb=vb.toLowerCase()}if(va<vb)return d==='asc'?-1:1;if(va>vb)return d==='asc'?1:-1;return 0})}
-function renderTable(){let f=PRODUCTS;if(currentFilter!=='all')f=f.filter(p=>p.series===currentFilter);if(searchTerm){const s=searchTerm.toLowerCase();f=f.filter(p=>p.model.toLowerCase().includes(s)||p.size.toLowerCase().includes(s)||p.material.toLowerCase().includes(s)||p.finish.toLowerCase().includes(s)||p.category.toLowerCase().includes(s)||p.type.toLowerCase().includes(s)||p.series.toLowerCase().includes(s)||p.ip.toLowerCase().includes(s))}f=sortProducts(f,currentSort.key,currentSort.dir);const t=f.reduce((s,p)=>s+p.qty,0);document.getElementById('showCount').textContent=f.length;document.getElementById('stockCount').textContent=t.toLocaleString();document.getElementById('productBody').innerHTML=f.map(p=>{const stockCell=p.mto&&p.qty===0?'<span class="mto-tag">Made to Order</span>':`<span class="stock-qty ${getStockClass(p.qty)}">${p.qty}</span>`;return`<tr><td><strong style="color:var(--corn-white)">${p.model}</strong></td><td><span class="cat-badge ${getCatClass(p.category)}">${p.category}</span></td><td>${p.size}</td><td>${p.material}</td><td>${p.ip}</td><td>${p.type}</td><td>${p.lock}</td><td>${p.weight}</td><td>${stockCell}</td><td><button class="enquire-btn" onclick="enquire('${p.model}')">Enquire</button></td></tr>`}).join('')}
-function enquire(m){const s=encodeURIComponent('Enquiry: '+m);const b=encodeURIComponent('Hi,\n\nI\'d like to enquire about the '+m+' enclosure.\n\nPlease send me pricing and availability.\n\nThanks');window.location.href='mailto:james@cornhub.ai?subject='+s+'&body='+b}
-document.querySelectorAll('.filter-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentFilter=b.dataset.filter;renderTable()})});
-document.querySelectorAll('.product-table th[data-sort]').forEach(th=>{th.addEventListener('click',()=>{const k=th.dataset.sort;if(currentSort.key===k){currentSort.dir=currentSort.dir==='asc'?'desc':'asc'}else{currentSort={key:k,dir:'asc'}}document.querySelectorAll('.product-table th').forEach(t=>t.classList.remove('sorted'));th.classList.add('sorted');th.querySelector('.sort-arrow').textContent=currentSort.dir==='asc'?'\u2191':'\u2193';renderTable()})});
-document.getElementById('searchInput').addEventListener('input',e=>{searchTerm=e.target.value;renderTable()});
-const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});reveals.forEach(el=>observer.observe(el));
-renderTable();
+function sortProducts(p,k,d){return[...p].sort(function(a,b){var va=a[k],vb=b[k];if(k==='weight'){va=parseWeight(va);vb=parseWeight(vb)}if(k==='size'){va=a.h*1e6+a.w*1e3+a.d;vb=b.h*1e6+b.w*1e3+b.d}if(typeof va==='string'){va=va.toLowerCase();vb=vb.toLowerCase()}if(va<vb)return d==='asc'?-1:1;if(va>vb)return d==='asc'?1:-1;return 0})}
+function renderTable(){var f=PRODUCTS;if(currentFilter!=='all')f=f.filter(function(p){return p.series===currentFilter});if(searchTerm){var s=searchTerm.toLowerCase();f=f.filter(function(p){return p.model.toLowerCase().includes(s)||p.size.toLowerCase().includes(s)||p.material.toLowerCase().includes(s)||p.finish.toLowerCase().includes(s)||p.category.toLowerCase().includes(s)||p.type.toLowerCase().includes(s)||p.series.toLowerCase().includes(s)||p.ip.toLowerCase().includes(s)})}f=sortProducts(f,currentSort.key,currentSort.dir);var t=f.reduce(function(s,p){return s+p.qty},0);document.getElementById('showCount').textContent=f.length;document.getElementById('stockCount').textContent=t.toLocaleString();document.getElementById('productBody').innerHTML=f.map(function(p){var stockCell=p.mto&&p.qty===0?'<span class="mto-tag">Made to Order</span>':'<span class="stock-qty '+getStockClass(p.qty)+'">'+p.qty+'</span>';return'<tr><td><strong style="color:var(--corn-white)">'+p.model+'</strong></td><td><span class="cat-badge '+getCatClass(p.category)+'">'+p.category+'</span></td><td>'+p.size+'</td><td>'+p.material+'</td><td>'+p.ip+'</td><td>'+p.type+'</td><td>'+p.lock+'</td><td>'+p.weight+'</td><td>'+stockCell+'</td><td><button class="enquire-btn" onclick="enquire(\''+p.model+'\')">Enquire</button></td></tr>'}).join('')}
+function enquire(m){var s=encodeURIComponent('Enquiry: '+m);var b=encodeURIComponent('Hi,\n\nI\'d like to enquire about the '+m+' enclosure.\n\nPlease send me pricing and availability.\n\nThanks');window.location.href='mailto:james@cornhub.ai?subject='+s+'&body='+b}
+document.querySelectorAll('.filter-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.filter-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');currentFilter=b.dataset.filter;renderTable()})});
+document.querySelectorAll('.product-table th[data-sort]').forEach(function(th){th.addEventListener('click',function(){var k=th.dataset.sort;if(currentSort.key===k){currentSort.dir=currentSort.dir==='asc'?'desc':'asc'}else{currentSort={key:k,dir:'asc'}}document.querySelectorAll('.product-table th').forEach(function(t){t.classList.remove('sorted')});th.classList.add('sorted');th.querySelector('.sort-arrow').textContent=currentSort.dir==='asc'?'\u2191':'\u2193';renderTable()})});
+document.getElementById('searchInput').addEventListener('input',function(e){searchTerm=e.target.value;renderTable()});
+var reveals=document.querySelectorAll('.reveal');var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});reveals.forEach(function(el){observer.observe(el)});
+
+// Load products from Supabase on page load
+loadProducts();
+
+/* ============================================
+   AI CHAT WIDGET
+   ============================================ */
+var chatFab=document.getElementById('chatFab');
+var chatWindow=document.getElementById('chatWindow');
+var chatClose=document.getElementById('chatClose');
+var chatInput=document.getElementById('chatInput');
+var chatSend=document.getElementById('chatSend');
+var chatMessages=document.getElementById('chatMessages');
+var chatHistory=[];
+var chatBusy=false;
+
+var CHAT_SYSTEM='You are the CORN Enclosures AI sales assistant. CORN Enclosures is a Sydney-based sheet metal fabrication business selling IP66/65 certified enclosures. Product lines: HDS-S-316 (stainless flat roof), HDS-I-316 (stainless sloped roof), HDS-S-PCMS (powder coated mild steel in RAL 7035 grey and RAL 2000 orange), HDS-F-316 (floor standing), HDS-P-316 (push button boxes), HDS-T-316 (terminal boxes), MGF (meter boxes). Over 1000 units in stock in Sydney. ISO 9001 certified. SGS certified IP ratings. Major clients include BHP, Rio Tinto, Sydney Water, Sydney Trains. Be friendly and direct like a knowledgeable mate. Never quote prices — direct to james@cornhub.ai for pricing. Recommend specific products based on environment and application. Always end with a clear next step: email james@cornhub.ai or call 1300 921 088.';
+
+chatFab.addEventListener('click',function(){
+chatWindow.classList.toggle('open');
+if(chatWindow.classList.contains('open'))chatInput.focus();
+});
+chatClose.addEventListener('click',function(){chatWindow.classList.remove('open')});
+
+function addChatMsg(role,text){
+var div=document.createElement('div');
+div.className='chat-msg '+role;
+div.textContent=text;
+chatMessages.appendChild(div);
+chatMessages.scrollTop=chatMessages.scrollHeight;
+return div;
+}
+
+function showTyping(){
+var div=document.createElement('div');
+div.className='chat-typing';
+div.id='chatTyping';
+div.innerHTML='<span></span><span></span><span></span>';
+chatMessages.appendChild(div);
+chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+
+function removeTyping(){
+var el=document.getElementById('chatTyping');
+if(el)el.remove();
+}
+
+async function sendChat(){
+var text=chatInput.value.trim();
+if(!text||chatBusy)return;
+chatInput.value='';
+chatBusy=true;
+chatSend.disabled=true;
+
+addChatMsg('user',text);
+chatHistory.push({role:'user',content:text});
+showTyping();
+
+try{
+var res=await fetch('https://api.anthropic.com/v1/messages',{
+method:'POST',
+headers:{
+'Content-Type':'application/json',
+'anthropic-version':'2023-06-01',
+'anthropic-dangerous-direct-browser-access':'true'
+},
+body:JSON.stringify({
+model:'claude-sonnet-4-20250514',
+max_tokens:1024,
+system:CHAT_SYSTEM,
+messages:chatHistory
+})
+});
+var data=await res.json();
+var reply=(data.content&&data.content[0]&&data.content[0].text)||'Sorry, I had trouble responding. Please email james@cornhub.ai for help.';
+chatHistory.push({role:'assistant',content:reply});
+removeTyping();
+addChatMsg('assistant',reply);
+}catch(err){
+removeTyping();
+addChatMsg('assistant','Sorry, something went wrong. Please email james@cornhub.ai or call 1300 921 088.');
+}
+chatBusy=false;
+chatSend.disabled=false;
+}
+
+chatSend.addEventListener('click',sendChat);
+chatInput.addEventListener('keydown',function(e){if(e.key==='Enter')sendChat()});
 </script>
 </body>
 </html>
